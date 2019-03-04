@@ -5,19 +5,26 @@ int plus(int a, int b) { return a + b; }
 int minus(int a, int b) { return a - b; }
 int multiply(int a, int b) { return a * b; }
 int divided(int a, int b) { return a / b; }
+int(*fun_ptr[4]) (int x,int y);
 int main()
 {
-	int a, c;
-	char b;
-	printf("key a Function \nEX: 1 + 1\n");
-	scanf("%i %c %i", &a, &b, &c);
-	//IF ELSE IF
-	if (b == '+')
-		printf("%d %c %d = %d\n", a, b, c, plus(a, c));
-	else if (b == '-')
-		printf("%d %c %d = %d\n", a, b, c, minus(a, c));
-	else if (b == '*')
-		printf("%d %c %d = %d\n", a, b, c, multiply(a, c));
-	else if (b == '/')
-		printf("%d %c %d = %d\n", a, b, c, divided(a, c));
+	int a, b;
+	int result;
+	int i;
+	fun_ptr[0]=plus;
+	fun_ptr[1]=minus;
+	fun_ptr[2]=multiply;
+	fun_ptr[3]=divided;
+	printf("Enter two numbers:");
+	scanf("%d %d",&a,&b);
+	printf("0:plus,1:minus,2:multiply,3:divided\n");
+	while(i<0 || i>3)
+{
+	printf("Enter number of fun:");
+	scanf("%d",&i);
+};
+	result=(*fun_ptr[i])(a,b);
+	printf("%d \n",result);
+	return 0;
+	
 }
